@@ -8,6 +8,8 @@
   --accent: #0d9488;
   --accent-dark: #0f766e;
   --muted: #64748b;
+  --font-display: system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, monospace;
 }
 
 @media (prefers-color-scheme: dark) {

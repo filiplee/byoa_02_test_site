@@ -15,15 +15,38 @@ export default function GlobalError({
 
   return (
     <html lang="en">
-      <body className="min-h-screen antialiased bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-100">
-        <div className="flex min-h-screen flex-col items-center justify-center px-6">
-          <h1 className="text-2xl font-semibold">Something went wrong</h1>
-          <p className="mt-2 text-sm text-stone-600 dark:text-stone-400">
+      <body
+        style={{
+          minHeight: "100vh",
+          margin: 0,
+          padding: 0,
+          fontFamily: "system-ui, sans-serif",
+          background: "#fafaf9",
+          color: "#0f172a",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ textAlign: "center", padding: "2rem" }}>
+          <h1 style={{ fontSize: "1.5rem", fontWeight: 600, marginBottom: "0.5rem" }}>
+            Something went wrong
+          </h1>
+          <p style={{ fontSize: "0.875rem", color: "#64748b", marginBottom: "1.5rem" }}>
             A critical error occurred. Please try again.
           </p>
           <button
             onClick={reset}
-            className="mt-8 rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-500"
+            style={{
+              padding: "0.5rem 1rem",
+              fontSize: "0.875rem",
+              fontWeight: 500,
+              background: "#0d9488",
+              color: "white",
+              border: "none",
+              borderRadius: "0.5rem",
+              cursor: "pointer",
+            }}
           >
             Try again
           </button>

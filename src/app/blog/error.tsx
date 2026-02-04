@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 
-export default function Error({
+export default function BlogError({
   error,
   reset,
 }: {
@@ -16,10 +16,10 @@ export default function Error({
 
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-6">
-      <h1 className="font-display text-2xl font-semibold text-[var(--foreground)]">
+      <h1 className="text-2xl font-semibold text-stone-900 dark:text-stone-100">
         Something went wrong
       </h1>
-      <p className="mt-2 text-sm text-[var(--muted)]">
+      <p className="mt-2 text-sm text-stone-600 dark:text-stone-400">
         We couldn’t load this page. Please try again.
       </p>
       <div className="mt-8 flex gap-4">
@@ -30,8 +30,14 @@ export default function Error({
           Try again
         </button>
         <Link
+          href="/blog"
+          className="rounded-lg border border-stone-300 px-4 py-2 text-sm font-medium text-stone-900 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-100 dark:hover:bg-stone-800"
+        >
+          Back to Blog
+        </Link>
+        <Link
           href="/"
-          className="rounded-lg border border-stone-300 px-4 py-2 text-sm font-medium text-[var(--foreground)] hover:bg-stone-100 dark:border-stone-700 dark:hover:bg-stone-800/50"
+          className="rounded-lg border border-stone-300 px-4 py-2 text-sm font-medium text-stone-900 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-100 dark:hover:bg-stone-800"
         >
           Go home
         </Link>
