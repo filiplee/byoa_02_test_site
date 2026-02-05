@@ -109,7 +109,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </header>
           <div
             className="prose prose-stone mt-8 dark:prose-invert prose-headings:font-display prose-a:text-red-600 prose-a:no-underline hover:prose-a:underline prose-pre:bg-stone-900 prose-pre:text-stone-100 max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: post.content ?? "" }}
           />
         </article>
       </div>
