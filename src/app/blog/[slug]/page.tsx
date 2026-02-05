@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/blog";
+import { PostTags } from "@/components/PostTags";
 
 interface PageProps {
   params: { slug: string };
@@ -43,7 +44,7 @@ function PostNotFound() {
       </p>
       <Link
         href="/blog"
-        className="mt-8 inline-flex rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-500"
+        className="mt-8 inline-flex rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-500"
       >
         Back to Blog
       </Link>
@@ -65,7 +66,7 @@ function PostError() {
       </p>
       <Link
         href="/blog"
-        className="mt-8 inline-flex rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-500"
+        className="mt-8 inline-flex rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-500"
       >
         Back to Blog
       </Link>
@@ -82,7 +83,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     if (!post) return <PostNotFound />;
 
     return (
-      <div className="gradient-mesh min-h-[60vh]">
+      <div className="gradient-mesh-red min-h-[60vh]">
         <article className="mx-auto max-w-2xl px-6 py-16">
           <Link
             href="/blog"
@@ -104,9 +105,10 @@ export default async function BlogPostPage({ params }: PageProps) {
             <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-[var(--foreground)] sm:text-4xl">
               {post.title}
             </h1>
+            <PostTags tags={post.tags} />
           </header>
           <div
-            className="prose prose-stone mt-8 dark:prose-invert prose-headings:font-display prose-a:text-teal-600 prose-a:no-underline hover:prose-a:underline prose-pre:bg-stone-900 prose-pre:text-stone-100 max-w-none"
+            className="prose prose-stone mt-8 dark:prose-invert prose-headings:font-display prose-a:text-red-600 prose-a:no-underline hover:prose-a:underline prose-pre:bg-stone-900 prose-pre:text-stone-100 max-w-none"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </article>

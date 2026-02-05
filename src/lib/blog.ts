@@ -11,10 +11,18 @@ export interface BlogPost {
   title: string;
   date: string;
   excerpt: string;
-  content: string;
+  tags: string[];
+  content?: string;
 }
 
-export function getSortedPosts(): Omit<BlogPost, "content">[] {
+function parseTags(data: Record<string, unknown>): string[] {
+  const raw = data.tags;
+  if (Array.isArray(raw)) return raw.filter((t): t is string => typeof t === "string");
+  if (typeof raw === "string") return raw.split(",").map((t) => t.trim()).filter(Boolean);
+  return [];
+}
+
+export function getSortedPosts(tagFilter?: string): Omit<BlogPost, "content">[] {
   try {
     const fileNames = fs.readdirSync(postsDirectory);
     const allPosts = fileNames
@@ -29,9 +37,26 @@ export function getSortedPosts(): Omit<BlogPost, "content">[] {
           title: data.title as string,
           date: data.date as string,
           excerpt: data.excerpt as string,
+          tags: parseTags(data as Record<string, unknown>),
         };
       });
-    return allPosts.sort((a, b) => (a.date > b.date ? -1 : 1));
+    const sorted = allPosts.sort((a, b) => (a.date > b.date ? -1 : 1));
+    if (!tagFilter?.trim()) return sorted;
+    const lower = tagFilter.toLowerCase().trim();
+    return sorted.filter((p) => p.tags.some((t) => t.toLowerCase() === lower));
+  } catch {
+    return [];
+  }
+}
+
+export function getAllTags(): string[] {
+  try {
+    const posts = getSortedPosts();
+    const set = new Set<string>();
+    for (const post of posts) {
+      for (const tag of post.tags) set.add(tag);
+    }
+    return Array.from(set).sort();
   } catch {
     return [];
   }
@@ -73,6 +98,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       title: data.title as string,
       date: data.date as string,
       excerpt: data.excerpt as string,
+      tags: parseTags(data as Record<string, unknown>),
       content: contentHtml,
     };
   } catch {

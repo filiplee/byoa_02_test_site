@@ -2,6 +2,9 @@
 title: "Welcome to the Blog"
 date: "2025-02-03"
 excerpt: "Your first step into a modern Next.js blog. Learn how this setup works and how to add your own posts."
+tags:
+  - getting-started
+  - nextjs
 ---
 
 This is your first blog post. The blog is powered by **Markdown** files stored in the `content/blog` directory. Each file needs frontmatter with `title`, `date`, and `excerpt` fields.

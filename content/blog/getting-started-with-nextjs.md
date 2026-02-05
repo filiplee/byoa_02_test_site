@@ -2,6 +2,9 @@
 title: "Getting Started with Next.js"
 date: "2025-02-02"
 excerpt: "A quick guide to the Next.js App Router and why it's a great choice for modern web applications."
+tags:
+  - nextjs
+  - react
 ---
 
 Next.js has become the go-to framework for React applications, and the **App Router** introduced in Next.js 13 makes it even more powerful. Here's why this setup works well for landing pages and blogs.

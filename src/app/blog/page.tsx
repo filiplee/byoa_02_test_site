@@ -1,16 +1,25 @@
 import Link from "next/link";
-import { getSortedPosts } from "@/lib/blog";
+import { Suspense } from "react";
+import { getSortedPosts, getAllTags } from "@/lib/blog";
+import { TagFilter } from "@/components/TagFilter";
+import { PostTags } from "@/components/PostTags";
 
 export const metadata = {
   title: "Blog — Build YOA",
   description: "Articles, tutorials, and ideas. Built with Next.js.",
 };
 
-export default function BlogPage() {
-  const posts = getSortedPosts();
+interface BlogPageProps {
+  searchParams: { tag?: string };
+}
+
+export default function BlogPage({ searchParams }: BlogPageProps) {
+  const tag = typeof searchParams?.tag === "string" ? searchParams.tag : null;
+  const posts = getSortedPosts(tag ?? undefined);
+  const allTags = getAllTags();
 
   return (
-    <div className="gradient-mesh min-h-[60vh]">
+    <div className="gradient-mesh-red min-h-[60vh]">
       <div className="mx-auto max-w-3xl px-6 py-16">
         <h1 className="font-display text-3xl font-bold tracking-tight text-[var(--foreground)] sm:text-4xl">
           Blog
@@ -18,6 +27,21 @@ export default function BlogPage() {
         <p className="mt-4 text-[var(--muted)]">
           Thoughts, tutorials, and updates. Newest first.
         </p>
+
+        <Suspense fallback={null}>
+          <div className="mt-6">
+            <TagFilter tags={allTags} currentTag={tag} />
+          </div>
+        </Suspense>
+
+        {tag && (
+          <p className="mt-3 text-sm text-[var(--muted)]">
+            Showing posts tagged &quot;{tag}&quot;.{" "}
+            <Link href="/blog" className="text-red-600 dark:text-red-400 hover:underline">
+              Show all
+            </Link>
+          </p>
+        )}
 
         <ul className="mt-12 space-y-8">
           {posts.map((post) => (
@@ -33,13 +57,14 @@ export default function BlogPage() {
                     day: "numeric",
                   })}
                 </time>
-                <h2 className="mt-2 font-display text-xl font-semibold text-[var(--foreground)] hover:text-teal-600 dark:hover:text-teal-400">
+                <h2 className="mt-2 font-display text-xl font-semibold text-[var(--foreground)] hover:text-red-600 dark:hover:text-red-400">
                   <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                 </h2>
+                <PostTags tags={post.tags} />
                 <p className="mt-2 text-sm text-[var(--muted)]">{post.excerpt}</p>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="mt-3 inline-flex items-center text-sm font-medium text-teal-600 dark:text-teal-400 hover:underline"
+                  className="mt-3 inline-flex items-center text-sm font-medium text-red-600 dark:text-red-400 hover:underline"
                 >
                   Read more →
                 </Link>

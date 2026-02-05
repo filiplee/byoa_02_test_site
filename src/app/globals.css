@@ -47,3 +47,18 @@ body {
     radial-gradient(at 80% 0%, rgba(251, 191, 36, 0.06) 0px, transparent 50%),
     radial-gradient(at 0% 50%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
 }
+
+/* Gradient red theme for blog posts */
+.gradient-mesh-red {
+  background: 
+    radial-gradient(at 40% 20%, rgba(220, 38, 38, 0.18) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(185, 28, 28, 0.12) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(244, 63, 94, 0.1) 0px, transparent 50%);
+}
+
+.dark .gradient-mesh-red {
+  background: 
+    radial-gradient(at 40% 20%, rgba(248, 113, 113, 0.12) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(239, 68, 68, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(244, 63, 94, 0.06) 0px, transparent 50%);
+}

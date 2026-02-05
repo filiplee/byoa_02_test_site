@@ -2,6 +2,9 @@
 title: "Tips for Better Technical Writing"
 date: "2025-02-01"
 excerpt: "Simple advice to make your blog posts clearer and more useful for readers."
+tags:
+  - writing
+  - tips
 ---
 
 Whether you're documenting your project or sharing what you've learned, good writing makes a big difference. Here are a few principles that help.
