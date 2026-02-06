@@ -12,7 +12,7 @@ export function TagFilter({ tags, currentTag }: TagFilterProps) {
   const searchParams = useSearchParams();
 
   function handleChange(value: string) {
-    const next = new URLSearchParams(searchParams);
+    const next = new URLSearchParams(searchParams ?? undefined);
     if (value) {
       next.set("tag", value);
     } else {

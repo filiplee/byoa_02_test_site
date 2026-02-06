@@ -6,7 +6,7 @@ tags:
   - writing
   - tips
 ---
-
+#tips #writing
 Whether you're documenting your project or sharing what you've learned, good writing makes a big difference. Here are a few principles that help.
 
 ## Lead with the problem
