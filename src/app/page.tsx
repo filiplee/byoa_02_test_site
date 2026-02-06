@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const features = [
   {
@@ -64,17 +65,21 @@ export default function Home() {
         <div className="relative flex min-h-[420px] items-end justify-center px-4 pb-8 sm:min-h-[480px] md:min-h-[520px]">
           {/* Left placeholder image */}
           <div className="absolute left-0 top-1/2 hidden h-48 w-48 -translate-y-1/2 overflow-hidden rounded-3xl border border-stone-200/50 shadow-lg dark:border-stone-700/50 md:block lg:left-8">
-            <img
+            <Image
               src="https://picsum.photos/seed/hero-left/192/192"
               alt=""
+              width={192}
+              height={192}
               className="h-full w-full object-cover"
             />
           </div>
           {/* Right placeholder image */}
           <div className="absolute right-0 top-1/2 hidden h-48 w-48 -translate-y-1/2 overflow-hidden rounded-full border border-stone-200/50 shadow-lg dark:border-stone-700/50 md:block lg:right-8">
-            <img
+            <Image
               src="https://picsum.photos/seed/hero-right/192/192"
               alt=""
+              width={192}
+              height={192}
               className="h-full w-full object-cover"
             />
           </div>
@@ -82,9 +87,11 @@ export default function Home() {
           {/* Phone mockup with placeholder image */}
           <div className="relative z-10 mx-auto w-[280px] flex-shrink-0 sm:w-[320px]">
             <div className="aspect-[9/19] overflow-hidden rounded-[2.5rem] border-[14px] border-stone-800 bg-stone-200 shadow-2xl dark:border-stone-700 dark:bg-stone-800">
-              <img
+              <Image
                 src="https://picsum.photos/seed/phone-app/280/560"
                 alt="App screenshot placeholder"
+                width={280}
+                height={560}
                 className="h-full w-full object-cover"
               />
             </div>
